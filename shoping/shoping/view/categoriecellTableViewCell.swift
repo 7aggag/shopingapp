@@ -9,16 +9,18 @@
 import UIKit
 
 class categoriecellTableViewCell: UITableViewCell {
-
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @IBOutlet weak var categoryname : UILabel!
+    @IBOutlet weak var categorypic : UIImageView!
+    
+    
+    
+    func updateview (categories : category)  {
+       
+        categorypic.image = UIImage(named: categories.categoriepic)
+        categoryname.text = categories.categoriname
+        
+        
     }
 
 }

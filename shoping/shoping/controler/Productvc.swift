@@ -8,23 +8,36 @@
 
 import UIKit
 
-class Productvc: UIViewController {
-
+class Productvc: UIViewController , UICollectionViewDelegate , UICollectionViewDataSource {
+   
+  private (set) public var pro = [product]()
+ 
+    @IBOutlet weak var procollection : UICollectionView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        procollection.delegate = self
+        procollection.dataSource = self
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return pro.count
     }
-    */
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+            
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "productview", for: indexPath)as? productViewCell {
+            let pruct = pro[indexPath.row]
+            cell.updateprodectcell(produc: pruct)
+        return cell
+        }
+            return productViewCell()
+    }
+    func getpro(catego : category ){
+        
+       pro = data.datainstanic.getproduct(title:catego.categoriname)
+        navigationItem.title = catego.categoriname
+    }
+
 
 }

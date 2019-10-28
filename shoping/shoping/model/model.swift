@@ -18,6 +18,23 @@ struct category {
         categoriepic = pic
         
     }
+}
+
+
+struct  product {
+    
+    var productname : String
+    var prosuctdes : String
+    var productprice : String
+    
+    
+    init( name : String , des : String , price : String) {
+    
+        productname = name
+        prosuctdes = des
+        productprice = price
+        
+    }
     
     
     
